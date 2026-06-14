@@ -1,0 +1,25 @@
+
+> atelier-dashboard@0.1.0 dev
+> next dev
+
+  ▲ Next.js 14.2.35
+  - Local:        http://localhost:3000
+  - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 7.8s
+ ○ Compiling /middleware ...
+ ✓ Compiled /middleware in 1250ms (128 modules)
+ ○ Compiling /preview/admin ...
+ ✓ Compiled /preview/admin in 24.8s (1465 modules)
+ GET /preview/admin 200 in 25749ms
+ ○ Compiling /preview/dashboard ...
+ ✓ Compiled /preview/dashboard in 23s (1586 modules)
+ GET /preview/dashboard 200 in 23750ms
+ GET /preview/dashboard 200 in 119ms
+ GET /preview/admin 200 in 129ms
+ GET /preview/dashboard 200 in 97ms
+ GET /preview/dashboard 200 in 76ms
+ GET /preview/dashboard 200 in 257ms
+ GET /preview/admin 200 in 2929ms
+ GET /preview/admin 200 in 396ms
