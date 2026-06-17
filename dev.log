@@ -7,20 +7,26 @@
   - Environments: .env.local
 
  ✓ Starting...
- ✓ Ready in 6.9s
+ ✓ Ready in 6.8s
  ○ Compiling /middleware ...
- ✓ Compiled /middleware in 995ms (128 modules)
- ○ Compiling /preview/dashboard ...
- ✓ Compiled /preview/dashboard in 15.7s (1563 modules)
- GET /preview/dashboard 200 in 16343ms
- ○ Compiling /preview/admin ...
- ✓ Compiled /preview/admin in 14.9s (1586 modules)
- GET /preview/admin 200 in 15610ms
- GET /preview/dashboard 200 in 11601ms
- GET /preview/admin 200 in 84ms
+ ✓ Compiled /middleware in 2.2s (128 modules)
  ○ Compiling /login ...
- ✓ Compiled /login in 1174ms (1595 modules)
- GET /login 200 in 1319ms
- GET /preview/dashboard 200 in 1341ms
+ ✓ Compiled /login in 15.4s (1344 modules)
+ GET /login 200 in 15807ms
 <w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (102kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
 <w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (244kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
+ GET /login?redirect=%2F 200 in 442ms
+ GET /login?redirect=%2F 200 in 151ms
+ ○ Compiling / ...
+ ✓ Compiled / in 2s (1407 modules)
+ POST /login?redirect=%2F 303 in 4074ms
+ ○ Compiling /dashboard ...
+ ✓ Compiled /dashboard in 3.6s (1637 modules)
+ ○ Compiling /content ...
+ ✓ Compiled /content in 1719ms (1646 modules)
+ ○ Compiling /changes ...
+ ✓ Compiled /changes in 2.4s (1652 modules)
+ ○ Compiling /settings ...
+ ✓ Compiled /settings in 1238ms (1665 modules)
+ ○ Compiling /messages ...
+ ✓ Compiled /messages in 783ms (1666 modules)
