@@ -1,6 +1,6 @@
 import { ClientPreviewShell } from "@/components/layout/client-preview-shell";
 
-export default function ClientPreviewLayout({
+export default function MessagesPreviewLayout({
   children,
 }: {
   children: React.ReactNode;

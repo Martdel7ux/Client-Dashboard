@@ -183,6 +183,7 @@ export interface Database {
           project_id: string;
           type: ContentItemType;
           label: string;
+          description: string | null;
           value: string | null;
           file_url: string | null;
           file_name: string | null;
@@ -197,6 +198,7 @@ export interface Database {
           project_id: string;
           type?: ContentItemType;
           label: string;
+          description?: string | null;
           value?: string | null;
           file_url?: string | null;
           file_name?: string | null;

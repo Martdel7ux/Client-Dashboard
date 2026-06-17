@@ -78,6 +78,7 @@ create table if not exists public.content_items (
   project_id  uuid not null references public.projects(id) on delete cascade,
   type        content_item_type not null default 'text',
   label       text not null,
+  description text,
   value       text,
   file_url    text,
   file_name   text,
@@ -272,3 +273,20 @@ exception when duplicate_object then null; end $$;
 insert into storage.buckets (id, name, public)
 values ('content', 'content', true)
 on conflict (id) do nothing;
+
+-- Storage policies: bucket is public-read; signed-in users may upload/manage.
+drop policy if exists "content public read" on storage.objects;
+create policy "content public read" on storage.objects
+  for select using (bucket_id = 'content');
+
+drop policy if exists "content authed insert" on storage.objects;
+create policy "content authed insert" on storage.objects
+  for insert to authenticated with check (bucket_id = 'content');
+
+drop policy if exists "content authed update" on storage.objects;
+create policy "content authed update" on storage.objects
+  for update to authenticated using (bucket_id = 'content');
+
+drop policy if exists "content authed delete" on storage.objects;
+create policy "content authed delete" on storage.objects
+  for delete to authenticated using (bucket_id = 'content');

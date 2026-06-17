@@ -31,6 +31,15 @@ const NAV = [
   { href: "/settings", label: "Settings", icon: Settings },
 ];
 
+// Routes that have a working preview. Demo links map here; the rest fall back
+// to the dashboard preview so nothing dead-ends.
+const PREVIEW_ROUTES: Record<string, string> = {
+  "/dashboard": "/preview/dashboard",
+  "/content": "/preview/content",
+  "/changes": "/preview/changes",
+  "/messages": "/preview/messages",
+};
+
 export function ClientSidebar({
   unreadMessages = 0,
   demo = false,
@@ -84,15 +93,18 @@ export function ClientSidebar({
         {/* Nav */}
         <nav className="flex flex-1 flex-col gap-1 px-3">
           {NAV.map((item) => {
-            const active =
-              pathname === item.href ||
-              (item.href !== "/dashboard" && pathname.startsWith(item.href));
+            const previewHref = PREVIEW_ROUTES[item.href];
+            const href = demo ? (previewHref ?? "/preview/dashboard") : item.href;
+            const active = demo
+              ? pathname === previewHref
+              : pathname === item.href ||
+                (item.href !== "/dashboard" && pathname.startsWith(item.href));
             const Icon = item.icon;
             const showBadge = item.badgeKey === "messages" && unreadMessages > 0;
 
             const link = (
               <Link
-                href={demo ? "/preview/dashboard" : item.href}
+                href={href}
                 className={cn(
                   "group relative flex h-10 items-center gap-3 rounded-md px-2.5 text-sm font-medium transition-colors",
                   active
