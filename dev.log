@@ -8,17 +8,11 @@
 
  ✓ Starting...
  ✓ Ready in 4.3s
- ✓ Compiled /middleware in 397ms (128 modules)
- ○ Compiling /preview/messages ...
- ✓ Compiled /preview/messages in 12.2s (1659 modules)
- GET /preview/messages 200 in 7236ms
- GET /preview/messages 200 in 676ms
- GET /preview/messages 200 in 246ms
- GET /preview/messages 200 in 106ms
- GET /preview/messages 200 in 65ms
- ○ Compiling /preview/changes ...
- ✓ Compiled /preview/changes in 1793ms (1759 modules)
- ○ Compiling /preview/content ...
- ✓ Compiled /preview/content in 825ms (1777 modules)
- ○ Compiling /preview/dashboard ...
- ✓ Compiled /preview/dashboard in 1031ms (1832 modules)
+ ✓ Compiled /middleware in 261ms
+ ✓ Compiled (128 modules)
+ ○ Compiling /login ...
+ ✓ Compiled /login in 15.9s (1344 modules)
+ GET /login 200 in 1628ms
+ ○ Compiling /preview/admin ...
+ ✓ Compiled /preview/admin in 2.6s (1466 modules)
+ GET /preview/admin 200 in 3428ms
