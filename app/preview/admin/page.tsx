@@ -10,7 +10,7 @@ import {
   StaggerItem,
 } from "@/components/dashboard/motion-primitives";
 
-export const metadata = { title: "Admin Preview — Atelier" };
+export const metadata = { title: "Admin Preview · Tamplo" };
 
 const days = (n: number) =>
   new Date(Date.now() + n * 86400000).toISOString().slice(0, 10);
@@ -80,7 +80,7 @@ export default function AdminDashboardPreview() {
     <div>
       <PageHeading
         title="Good afternoon, Martina"
-        description="Your studio at a glance — projects, clients, and invoices."
+        description="Your studio at a glance: projects, clients, and invoices."
       />
 
       {/* Stats row */}
@@ -99,7 +99,7 @@ export default function AdminDashboardPreview() {
             label="In Review"
             value={inReview}
             icon={<Eye className="size-[18px]" />}
-            sub="Awaiting your sign-off"
+            sub="Awaiting your approval"
             tone="review"
           />
         </StaggerItem>

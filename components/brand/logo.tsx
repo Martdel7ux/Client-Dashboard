@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-/** Atelier wordmark + glyph. The glyph is a layered indigo aperture. */
+/** Tamplo wordmark + glyph. The glyph is a layered indigo aperture. */
 export function Logo({
   className,
   showWord = true,
@@ -38,7 +38,7 @@ export function Logo({
       </span>
       {showWord && (
         <span className="text-[15px] font-bold tracking-tight text-ink">
-          Atelier
+          Tamplo
         </span>
       )}
     </span>

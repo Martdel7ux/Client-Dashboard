@@ -31,7 +31,7 @@ import {
   StaggerItem,
 } from "@/components/dashboard/motion-primitives";
 
-export const metadata = { title: "Dashboard — Atelier" };
+export const metadata = { title: "Dashboard · Tamplo" };
 
 export default async function DashboardPage() {
   const profile = await requireProfile();
@@ -70,8 +70,8 @@ export default async function DashboardPage() {
           Your {project.title} is{" "}
           <span className="font-semibold text-ink">
             {project.progress_percent}% complete
-          </span>{" "}
-          — you&apos;re in the{" "}
+          </span>
+          , and you&apos;re now in the{" "}
           <span className="font-semibold text-accent">
             {STAGE_META[project.stage].label}
           </span>{" "}
@@ -249,7 +249,7 @@ async function buildActivity(
     events.push({
       id: `m-${m.id}`,
       kind: "stage_advanced",
-      text: `Milestone completed — ${m.title}`,
+      text: `Milestone completed: ${m.title}`,
       at: m.completed_at!,
     });
   for (const msg of messages.data ?? [])
@@ -258,22 +258,22 @@ async function buildActivity(
       kind: "message",
       text:
         msg.content.length > 60
-          ? `New message — ${msg.content.slice(0, 60)}…`
-          : `New message — ${msg.content}`,
+          ? `New message: ${msg.content.slice(0, 60)}…`
+          : `New message: ${msg.content}`,
       at: msg.created_at,
     });
   for (const c of content.data ?? [])
     events.push({
       id: `c-${c.id}`,
       kind: "file_uploaded",
-      text: `Content ${c.status} — ${c.label}`,
+      text: `Content ${c.status}: ${c.label}`,
       at: c.created_at,
     });
   for (const cr of changes.data ?? [])
     events.push({
       id: `cr-${cr.id}`,
       kind: "change_request",
-      text: `Change request — ${cr.title}`,
+      text: `Change request: ${cr.title}`,
       at: cr.created_at,
     });
 

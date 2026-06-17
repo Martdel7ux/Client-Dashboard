@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-export const metadata = { title: "Settings — Atelier" };
+export const metadata = { title: "Settings · Tamplo" };
 
 export default async function SettingsPage() {
   const profile = await requireProfile();

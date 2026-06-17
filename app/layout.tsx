@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Atelier — Project Studio",
+  title: "Tamplo · Project Studio",
   description:
     "A premium client portal for design & development projects. Track stages, upload content, and collaborate in real time.",
   metadataBase: new URL(

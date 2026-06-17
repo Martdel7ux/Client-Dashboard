@@ -1,4 +1,4 @@
-# Atelier — Client Project Management Dashboard
+# Tamplo · Client Project Management Dashboard
 
 A premium, dark-mode-first portal for a design/development agency. Two sides:
 an **admin panel** for the agency owner and a **client portal** for clients.

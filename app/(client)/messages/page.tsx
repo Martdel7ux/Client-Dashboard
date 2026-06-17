@@ -3,14 +3,14 @@ import { PageHeading } from "@/components/dashboard/page-heading";
 import { EmptyState } from "@/components/dashboard/empty-state";
 import { Card } from "@/components/ui/card";
 
-export const metadata = { title: "Messages — Atelier" };
+export const metadata = { title: "Messages · Tamplo" };
 
 export default function MessagesPage() {
   return (
     <div>
       <PageHeading
         title="Messages"
-        description="A direct line to your project team. Replies arrive in real time — no refresh needed."
+        description="A direct line to your project team. Replies arrive in real time, no refresh needed."
       />
       <Card>
         <EmptyState

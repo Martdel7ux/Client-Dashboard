@@ -31,7 +31,7 @@ export const STAGE_META: Record<
     label: "Development",
     blurb: "Building it for real",
   },
-  review: { label: "Review", blurb: "Final polish and your sign-off" },
+  review: { label: "Review", blurb: "Final polish and your approval" },
   launched: { label: "Launched", blurb: "Live to the world" },
 };
 

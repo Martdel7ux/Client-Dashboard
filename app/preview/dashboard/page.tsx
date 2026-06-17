@@ -25,7 +25,7 @@ import {
   StaggerItem,
 } from "@/components/dashboard/motion-primitives";
 
-export const metadata = { title: "Dashboard Preview — Atelier" };
+export const metadata = { title: "Dashboard Preview · Tamplo" };
 
 // ── Sample data ─────────────────────────────────────────────
 const PROJECT = {
@@ -44,25 +44,25 @@ const EVENTS: ActivityEvent[] = [
   {
     id: "1",
     kind: "stage_advanced",
-    text: "Milestone completed — Homepage visual direction",
+    text: "Milestone completed: Homepage visual direction",
     at: hoursAgo(3),
   },
   {
     id: "2",
     kind: "message",
-    text: "New message — Loving the new hero section, one small tweak…",
+    text: "New message: Loving the new hero section, one small tweak…",
     at: hoursAgo(7),
   },
   {
     id: "3",
     kind: "file_uploaded",
-    text: "Content uploaded — About page copy",
+    text: "Content uploaded: About page copy",
     at: hoursAgo(26),
   },
   {
     id: "4",
     kind: "change_request",
-    text: "Change request — Swap testimonial photos",
+    text: "Change request: Swap testimonial photos",
     at: hoursAgo(50),
   },
   {
@@ -84,8 +84,8 @@ export default function DashboardPreview() {
           Your {PROJECT.title} is{" "}
           <span className="font-semibold text-ink">
             {PROJECT.progress_percent}% complete
-          </span>{" "}
-          — you&apos;re in the{" "}
+          </span>
+          , and you&apos;re now in the{" "}
           <span className="font-semibold text-accent">
             {STAGE_META[PROJECT.stage].label}
           </span>{" "}

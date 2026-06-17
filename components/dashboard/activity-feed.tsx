@@ -47,7 +47,7 @@ export function ActivityFeed({ events }: { events: ActivityEvent[] }) {
           <FileUp key="f" className="size-3.5" />,
         ]}
         title="Nothing yet"
-        description="Project activity — stage changes, uploads and messages — will appear here as things move."
+        description="Project activity like stage changes, uploads and messages will appear here as things move."
       />
     );
   }

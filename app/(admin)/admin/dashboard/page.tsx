@@ -7,7 +7,7 @@ import { Card } from "@/components/ui/card";
 import { signOut } from "@/app/(auth)/login/actions";
 import { Button } from "@/components/ui/button";
 
-export const metadata = { title: "Admin — Atelier" };
+export const metadata = { title: "Admin · Tamplo" };
 
 export default async function AdminDashboardPage() {
   const profile = await requireAdmin();
@@ -16,7 +16,7 @@ export default async function AdminDashboardPage() {
     <main className="mx-auto w-full max-w-6xl px-6 py-8 lg:px-10">
       <PageHeading
         title={`Welcome back, ${firstName(profile.full_name)}`}
-        description="Your studio at a glance — projects, clients, and invoices."
+        description="Your studio at a glance: projects, clients, and invoices."
         action={
           <form action={signOut}>
             <Button variant="secondary" size="sm">

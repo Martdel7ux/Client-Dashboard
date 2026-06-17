@@ -3,14 +3,14 @@ import { PageHeading } from "@/components/dashboard/page-heading";
 import { EmptyState } from "@/components/dashboard/empty-state";
 import { Card } from "@/components/ui/card";
 
-export const metadata = { title: "Content — Atelier" };
+export const metadata = { title: "Content · Tamplo" };
 
 export default function ContentPage() {
   return (
     <div>
       <PageHeading
         title="Content"
-        description="Upload the words, images, and links that bring your site to life — organised by section."
+        description="Upload the words, images, and links that bring your site to life, organised by section."
       />
       <Card>
         <EmptyState

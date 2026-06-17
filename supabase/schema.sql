@@ -1,5 +1,5 @@
 -- ============================================================================
--- Atelier — Client Project Management Dashboard
+-- Tamplo · Client Project Management Dashboard
 -- Full Postgres schema + Row Level Security for Supabase.
 -- Run in the Supabase SQL editor (or `supabase db push`).
 -- ============================================================================

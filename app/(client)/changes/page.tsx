@@ -3,14 +3,14 @@ import { PageHeading } from "@/components/dashboard/page-heading";
 import { EmptyState } from "@/components/dashboard/empty-state";
 import { Card } from "@/components/ui/card";
 
-export const metadata = { title: "Change Requests — Atelier" };
+export const metadata = { title: "Change Requests · Tamplo" };
 
 export default function ChangesPage() {
   return (
     <div>
       <PageHeading
         title="Change Requests"
-        description="Request tweaks and additions. During the project they're free; post-launch requests are €45 each."
+        description="Request tweaks and additions. During the project they're free. After launch, each request is €45."
       />
       <Card>
         <EmptyState
