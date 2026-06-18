@@ -16,3 +16,6 @@
  ○ Compiling /preview/admin ...
  ✓ Compiled /preview/admin in 2.6s (1466 modules)
  GET /preview/admin 200 in 3428ms
+ ○ Compiling /preview/dashboard ...
+ ✓ Compiled /preview/dashboard in 2.2s (1597 modules)
+ ✓ Compiled in 819ms (734 modules)
