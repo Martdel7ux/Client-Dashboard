@@ -20,8 +20,8 @@ import {
   addContentItem,
   deleteContentItem,
   approveContentItem,
+  seedProjectContent,
 } from "@/app/(admin)/admin/actions";
-import { cn } from "@/lib/utils";
 import { CONTENT_STATUS_META } from "@/lib/stages";
 import { isItemComplete } from "@/lib/content";
 import { Card } from "@/components/ui/card";
@@ -93,11 +93,25 @@ export function ContentManager({
       </Card>
 
       {sections.length === 0 ? (
-        <Card className="flex flex-col items-center gap-2 py-10 text-center">
+        <Card className="flex flex-col items-center gap-3 py-10 text-center">
           <FolderPlus className="size-6 text-ink-ghost" />
-          <p className="text-sm text-ink-muted">
-            No sections yet. Add one above to start collecting content.
+          <p className="max-w-sm text-sm text-ink-muted">
+            No sections yet. Add the standard Hero, About, Services, and Contact
+            sections in one click, or build your own above.
           </p>
+          <Button
+            variant="secondary"
+            disabled={pending}
+            onClick={() =>
+              startTransition(async () => {
+                const res = await seedProjectContent(projectId);
+                if (res.ok) toast.success("Starter sections added");
+                else toast.error(res.error ?? "Failed");
+              })
+            }
+          >
+            <FolderPlus /> Add starter sections
+          </Button>
         </Card>
       ) : (
         sections

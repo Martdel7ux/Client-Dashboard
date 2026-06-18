@@ -14,6 +14,7 @@ import {
   invoiceEmail,
 } from "@/lib/email/templates";
 import { createChangeRequestPaymentLink } from "@/lib/stripe/stripe";
+import { seedDefaultContent } from "@/lib/default-content";
 import type {
   ProjectStage,
   ProjectStatus,
@@ -77,19 +78,26 @@ export async function createClientAction(
     { onConflict: "id" },
   );
 
-  const { error: projErr } = await admin.from("projects").insert({
-    client_id: userId,
-    title: projectTitle,
-    type: projectType,
-    status: "onboarding",
-    stage: "discovery",
-    progress_percent: 0,
-    start_date: new Date().toISOString().slice(0, 10),
-  });
+  const { data: project, error: projErr } = await admin
+    .from("projects")
+    .insert({
+      client_id: userId,
+      title: projectTitle,
+      type: projectType,
+      status: "onboarding",
+      stage: "discovery",
+      progress_percent: 0,
+      start_date: new Date().toISOString().slice(0, 10),
+    })
+    .select("id")
+    .single();
 
-  if (projErr) {
-    return { ok: false, error: `User made, but project failed: ${projErr.message}` };
+  if (projErr || !project) {
+    return { ok: false, error: `User made, but project failed: ${projErr?.message}` };
   }
+
+  // Give the client a starter content checklist to fill in right away.
+  await seedDefaultContent(admin, project.id);
 
   const mail = welcomeEmail({ name: fullName, email, password, projectTitle });
   const sent = await sendEmail({ to: email, ...mail });
@@ -314,6 +322,19 @@ export async function addSection(
     order_index: count ?? 0,
   });
   if (error) return { ok: false, error: error.message };
+  bump(projectId);
+  return { ok: true };
+}
+
+/** Adds the default Hero/About/Services/Contact starter sections to a project. */
+export async function seedProjectContent(projectId: string): Promise<Res> {
+  await requireAdmin();
+  const supabase = createClient();
+  try {
+    await seedDefaultContent(supabase, projectId);
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : "Seed failed" };
+  }
   bump(projectId);
   return { ok: true };
 }
