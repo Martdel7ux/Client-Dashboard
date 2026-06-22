@@ -2,6 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { motion } from "framer-motion";
+import { toast } from "sonner";
 import {
   Type,
   Link2,
@@ -62,33 +63,60 @@ export function ContentItemCard({
   function saveValue() {
     const trimmed = value.trim();
     startTransition(async () => {
-      if (!demo) await saveItemText(item.id, trimmed);
+      if (!demo) {
+        const res = await saveItemText(item.id, trimmed);
+        if (!res.ok) {
+          toast.error(res.error ?? "Couldn't save — please try again");
+          return;
+        }
+      }
       onChange({
         ...item,
         value: trimmed,
         status: trimmed ? "uploaded" : "pending",
       });
+      toast.success(trimmed ? "Saved — your team can see it" : "Cleared");
     });
   }
 
   function saveNote() {
     const trimmed = notes.trim();
     startTransition(async () => {
-      if (!demo) await saveItemNotes(item.id, trimmed);
+      if (!demo) {
+        const res = await saveItemNotes(item.id, trimmed);
+        if (!res.ok) {
+          toast.error(res.error ?? "Couldn't save note");
+          return;
+        }
+      }
       onChange({ ...item, notes: trimmed || null });
+      toast.success("Note saved");
     });
   }
 
   function onUploaded(fileUrl: string, fileName: string) {
     startTransition(async () => {
-      if (!demo) await saveItemFile(item.id, fileUrl, fileName);
+      if (!demo) {
+        const res = await saveItemFile(item.id, fileUrl, fileName);
+        if (!res.ok) {
+          toast.error(res.error ?? "Upload saved to storage but not recorded");
+          return;
+        }
+      }
       onChange({ ...item, file_url: fileUrl, file_name: fileName, status: "uploaded" });
+      toast.success("Uploaded — your team can see it");
     });
   }
 
   function onCleared() {
     startTransition(async () => {
-      if (!demo) await clearItemFile(item.id);
+      if (!demo) {
+        const res = await clearItemFile(item.id);
+        if (!res.ok) {
+          toast.error(res.error ?? "Couldn't remove file");
+          return;
+        }
+      }
       onChange({ ...item, file_url: null, file_name: null, status: "pending" });
     });
   }
@@ -137,8 +165,11 @@ export function ContentItemCard({
       </div>
 
       <div className="mt-3.5 pl-11">
+        <p className="mb-1.5 text-[11px] font-medium uppercase tracking-wider text-ink-faint">
+          {isTextual ? "Your response" : "Your upload"}
+        </p>
         {isTextual ? (
-          <div className="flex items-start gap-2">
+          <div>
             {item.type === "url" ? (
               <Input
                 value={value}
@@ -155,11 +186,20 @@ export function ContentItemCard({
                 className="flex w-full rounded-md border border-line bg-surface-sunken px-3.5 py-2.5 text-sm text-ink shadow-inset placeholder:text-ink-ghost focus-visible:border-accent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent"
               />
             )}
-            {valueDirty && (
-              <Button size="sm" onClick={saveValue} disabled={pending}>
+            <div className="mt-2 flex items-center justify-end gap-2">
+              {!valueDirty && complete && (
+                <span className="inline-flex items-center gap-1 text-xs text-status-completed">
+                  <Check className="size-3.5" /> Saved
+                </span>
+              )}
+              <Button
+                size="sm"
+                onClick={saveValue}
+                disabled={pending || !valueDirty}
+              >
                 {pending ? <Loader2 className="animate-spin" /> : "Save"}
               </Button>
-            )}
+            </div>
           </div>
         ) : (
           <FileDropzone
